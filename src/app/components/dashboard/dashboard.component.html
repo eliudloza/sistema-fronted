@@ -5,6 +5,15 @@
   .gris{
     background-color:rgb(224, 221, 221);
   }
+  h5{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(48, 160, 48);
+  }
+  .letra{
+    color: black;
+  }
 </style>
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -176,12 +185,12 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Listo para irse?</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-body letra">Seleccione "Cerrar sesión" si está listo para finalizar su sesión.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button class="btn btn-danger" routerLink="/login" (click)="auth.logout()" *ngIf="auth.loggedIn">Cerrar sesion</button>
