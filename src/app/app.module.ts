@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CancionesComponent } from './components/canciones/canciones.component';
 import { from } from 'rxjs';
+import { ConocenosComponent } from './components/conocenos/conocenos.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { from } from 'rxjs';
     NavbarComponent,
     RegisterComponent,
     CancionesComponent,
+    ConocenosComponent,
 
   ],
   imports: [
