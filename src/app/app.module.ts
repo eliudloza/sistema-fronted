@@ -11,18 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CancionesComponent } from './components/canciones/canciones.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { AuthenticationService} from './authentication.service'
-import { AuthGuardService} from './auth-guard.service';
 import { from } from 'rxjs';
-
-const routes = Routes = [
-  {path: '', component: DashboardComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register ', component: RegisterComponent},
-  {path: 'profile ', component: ProfileComponent,
-      canActivate: [AuthGuardService]}
-]
 
 
 @NgModule({
@@ -33,16 +22,15 @@ const routes = Routes = [
     NavbarComponent,
     RegisterComponent,
     CancionesComponent,
-    ProfileComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuardService, AuthenticationService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
