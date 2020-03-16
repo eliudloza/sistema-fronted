@@ -11,8 +11,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CancionesComponent } from './components/canciones/canciones.component';
-import { from } from 'rxjs';
 import { ConocenosComponent } from './components/conocenos/conocenos.component';
+//SERVICIOS
+import {SpotifyService} from './services/spotify.service';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ConocenosComponent } from './components/conocenos/conocenos.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    SpotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
