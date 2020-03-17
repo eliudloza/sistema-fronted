@@ -15,6 +15,12 @@ import { ConocenosComponent } from './components/conocenos/conocenos.component';
 //SERVICIOS
 import {SpotifyService} from './services/spotify.service';
 import { from } from 'rxjs';
+import { ProveedoresComponent } from './components/proveedores/proveedores.component';
+import { GenerosComponent } from './components/generos/generos.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { OrdenesComponent } from './components/ordenes/ordenes.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 
 @NgModule({
@@ -26,6 +32,12 @@ import { from } from 'rxjs';
     RegisterComponent,
     CancionesComponent,
     ConocenosComponent,
+    ProveedoresComponent,
+    GenerosComponent,
+    ClientesComponent,
+    EmpleadosComponent,
+    OrdenesComponent,
+    DetallesComponent,
 
   ],
   imports: [
