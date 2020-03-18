@@ -1,1 +1,61 @@
-<p>ordenes works!</p>
+<router-outlet></router-outlet>
+<div  class="card spur-card">
+
+    <div class="card-header">
+        
+        <div class="spur-card-title">
+            <i class="fas fa-list"></i> Insertar Ordenes </div>
+  
+    </div>
+  
+    <div class="card-body ">
+  
+        <form (submit)="postOrden()" class="action">
+  
+   
+            
+   
+  
+        <div class="form-group">
+  
+            <label for="exampleFormControlInput1">Fecha:</label>
+    
+            <input type="date" class="form-control" name="fecha" placeholder="" [(ngModel)]="elements.fecha" >
+    
+        </div>
+
+        <div class="form-group">
+
+            <label for="exampleFormControlSelect1">Empleados:</label>
+
+            <select class="form-control" id="exampleFormControlSelect1" name="empleados" [(ngModel)]="elements.empleado">
+
+                <option [value]="item.id" *ngFor="let item of empleados">{{item.nombre}}</option>
+
+            </select>
+
+
+
+        </div>
+  
+
+            <div class="form-group">
+  
+              <label for="exampleFormControlSelect1">Cliente:</label>
+  
+              <select class="form-control" id="exampleFormControlSelect1" name="cliente" [(ngModel)]="elements.cliente">
+  
+                  <option [value]="item.id" *ngFor="let item of clientes">{{item.nombre}}</option>
+  
+              </select> 
+  
+          </div>
+  
+  
+            <button type="submit" class="btn btn-warning">Guardar</button>
+  
+        </form>
+  
+    </div>
+  
+  </div>

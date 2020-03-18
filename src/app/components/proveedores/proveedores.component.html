@@ -1,1 +1,65 @@
-<p>proveedores works!</p>
+<router-outlet></router-outlet>
+<div class="card spur-card">
+
+    <div class="card-header">
+  
+  
+        <div class="spur-card-title">
+            <i class="fas fa-user-secret"></i>
+            Insertar Proveedores </div>
+  
+    </div>
+  
+    <div class="card-body ">
+  
+        <form (submit)="postProvee()" class="action">
+  
+            <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Nombre:</label>
+  
+                <input type="text" class="form-control" name="nombre" placeholder="Proveedor" [(ngModel)]="elements.nombre">
+  
+            </div>
+  
+            <div class="form-group">
+  
+              <label for="exampleFormControlInput1">Dirección:</label>
+  
+              <input type="text" class="form-control" name="direccion" placeholder="Escribe la direccion" [(ngModel)]="elements.direccion" >
+  
+            </div>
+
+            <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Ciudad:</label>
+    
+                <input type="text" class="form-control" name="ciudad" placeholder="Escribe la ciudad" [(ngModel)]="elements.ciudad" >
+    
+              </div>
+  
+              <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Compañia:</label>
+    
+                <input type="text" class="form-control" name="compania" placeholder="Escribe de que compañia pertenece" [(ngModel)]="elements.compania" >
+    
+              </div>
+               
+              <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Telefono:</label>
+    
+                <input type="number" class="form-control" name="telefono" placeholder="Telefono" [(ngModel)]="elements.telefono" >
+    
+              </div>
+  
+   
+  
+            <button type="submit" class="btn btn-warning">Guardar</button>
+  
+        </form>
+  
+    </div>
+  
+  </div>

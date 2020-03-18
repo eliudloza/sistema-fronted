@@ -1,4 +1,4 @@
-export interface Clientes{
+export interface Empleados{
     id:number
     nombre:string
 	ap_paterno:string

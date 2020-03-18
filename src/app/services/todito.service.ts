@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {Observable,of} from 'rxjs';
 
 
+
 export interface Cliente{
     nombre:string
 	ap_paterno:string
@@ -27,6 +28,34 @@ export interface Categoria{
     descripcion:string
 }
 
+export interface Proveedor{
+    nombre:string
+	direccion:string
+    ciudad:string
+    compania:string
+	telefono: number
+}
+
+export interface Canciones{
+    nombre: string
+    precio: number
+    cantidad: number
+    categoria: number
+    proveedor: number
+}
+
+export interface Ordenes{
+    fecha:string
+    empleado:number
+    cliente:number
+}
+
+export interface Detalle{
+    precio: number
+    cantidad : number
+    producto : number
+    orden : number
+}
 @Injectable({
 
     providedIn: 'root'
@@ -57,5 +86,37 @@ export class ToditoService{
 
     setCate(url: string, cat:Categoria):Observable<any>{
         return this.http.post(url, cat)
+    }
+
+    getProvee(url: string){
+        return this.http.get(url)
+    }
+
+    setProvee(url: string, prov:Proveedor):Observable<any>{
+        return this.http.post(url, prov)
+    }
+
+    getCancion(url: string){
+        return this.http.get(url)
+    }
+
+    setCancion(url: string, can:Canciones):Observable<any>{
+        return this.http.post(url, can)
+    }
+
+    getOrden(url: string){
+        return this.http.get(url)
+    }
+
+    setOrden(url: string, orden:Ordenes):Observable<any>{
+        return this.http.post(url, orden)
+    }
+
+    getDetalle(url: string){
+        return this.http.get(url)
+    }
+
+    setDetalle(url: string, detalle:Detalle):Observable<any>{
+        return this.http.post(url, detalle)
     }
 }

@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToditoService, Ordenes} from 'src/app/services/todito.service';
+import { Empleados } from 'src/app/components/empleados/empleados'
+import { Clientes } from 'src/app/components/clientes/clientes'
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
  
 
 @Component({
@@ -6,34 +11,48 @@ import { Component } from '@angular/core';
   templateUrl: './ordenes.component.html',
   styleUrls: ['./ordenes.component.css']
 })
-export class OrdenesComponent {
-  /*forma: FormGroup;
-  ordenes
-  empleados
-  clientes
+export class OrdenesComponent implements OnInit {
   
-    constructor(private service: OrdenesService, private service_empl: EmpleadosService, private service_clien: ClientesService) {
-      this.forma = new FormGroup({
-        'fecha': new FormControl('', [Validators.required,Validators.minLength(3)]),
-        'empleado': new FormControl('', Validators.required),
-        'cliente': new FormControl('', Validators.required)
-      });
-  
-      this.service.getOrden('/indexOrden').subscribe( (data: any) => {
-        this.ordenes = data;
-        console.log(data);
-      });
-  
-      this.service_empl.getEmpleado('/indexEmpl').subscribe( (data: any) => {
-        this.empleados = data;
-        console.log(data);
-      });
-  
-      this.service_clien.getCliente('/indexCliente').subscribe( (data: any) => {
-        this.clientes = data;
-        console.log(data);
-      });
-  
-     }*/
+  empleados:Empleados[]=[]
+  clientes:Clientes[]=[]
+
+  elements:Ordenes={
+    fecha:'',
+    empleado:0,
+    cliente:0
+  }
+
+  constructor(public servicio: ToditoService, public authService: AuthService) {
+
+    this.servicio.getCliente('/usuarios/indexCliente').subscribe((res:any)=>{
+
+      this.clientes=res;
+  });
+
+  this.servicio.getEmpleado('/usuarios/indexEmple').subscribe((res:any)=>{
+
+    this.empleados=res;
+
+  });
+}
+
+  public user: SocialUser;
+  public loggedIn: boolean;
+  ngOnInit(): void {
+
+ this.authService.authState.subscribe((user) => {
+       this.user = user;
+       this.loggedIn = (user != null);
+     });
+  }
+
+
+  postOrden(){
+    this.servicio.setOrden('/usuarios/creaOrden',this.elements).subscribe((res:any)=>{
+
+      console.log(res);
+
+    });
+  }
 
 }
