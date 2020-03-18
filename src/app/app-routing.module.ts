@@ -17,10 +17,12 @@ import { DetallesComponent } from './components/detalles/detalles.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children:[
+    {path: 'clientes', component: ClientesComponent}
+  ]},
   {path: 'conocenos', component: ConocenosComponent},
   {path: 'canciones', component: CancionesComponent},
-  {path: 'clientes', component: ClientesComponent},
+  
   {path: 'proveedores', component: ProveedoresComponent},
   {path: 'empleados', component: EmpleadosComponent},
   {path: 'generos', component: GenerosComponent},
