@@ -1,32 +1,43 @@
-import { Component } from '@angular/core';
-
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ToditoService, Empleados } from 'src/app/services/todito.service';
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-empleados',
   templateUrl: './empleados.component.html',
   styleUrls: ['./empleados.component.css']
 })
-export class EmpleadosComponent  {
-  /*forma: FormGroup;
-  empleados
-  
-    constructor(private service: EmpleadosService) {
-      this.forma = new FormGroup({
-        'nombre': new FormControl('', [Validators.required,Validators.minLength(3)]),
-        'ap_paterno': new FormControl('', Validators.required),
-        'ap_materno': new FormControl('', Validators.required),
-        'direccion': new FormControl('', Validators.required),
-        'ciudad': new FormControl('', Validators.required),
-        'tel': new FormControl('', Validators.required),
+export class EmpleadosComponent implements OnInit {
+ 
+  elements:Empleados={
 
-      });
-  
-      this.service.getEmpleado('/indexCliente').subscribe( (data: any) => {
-        this.empleados = data;
-        console.log(data);
-      });
+    nombre:'',
+    ap_paterno: '',
+    ap_materno:'',
+    direccion:'',
+    ciudad:'',
+    tel:0
+  }
 
-    }*/
+  public user:SocialUser;
+  public loggedIn: boolean;  
+  constructor(public servicio: ToditoService, public authService: AuthService) { }
+
+  ngOnInit(): void {
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+  }
+
+  postEmpleado(){
+    this.servicio.setEmpleado('/usuarios/crearEmpleado', this.elements).subscribe((res:any) =>{
+      console.log(res);
+    })
+  
+  
+  }
 
 }

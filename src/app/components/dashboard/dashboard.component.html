@@ -57,7 +57,7 @@
 
      <!--Empleados-->
      <li class="nav-item">
-      <a class="nav-link collapsed" href="#" routerLink="/empleados"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" href="#" routerLink="/dashboard/empleados"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-id-card"></i>
         <span>Empleados</span>
       </a>
@@ -65,7 +65,7 @@
 
     <!--Generos-->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" routerLink="/generos"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" href="#" routerLink="/dashboard/generos"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-female"></i><i class="fas fa-male"></i>
         <span>Generos</span>
       </a>
@@ -135,7 +135,8 @@
       <div class="container-fluid">
 
         <!-- Page Heading -->
-        <app-clientes></app-clientes>
+        <router-outlet></router-outlet>
+        
 
       </div>
       <!-- /.container-fluid -->
