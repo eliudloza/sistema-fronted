@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { GenerosService } from 'src/app/services/generos.service';
+
 @Component({
   selector: 'app-generos',
   templateUrl: './generos.component.html',
   styleUrls: ['./generos.component.css']
 })
 export class GenerosComponent  {
-  forma: FormGroup;
+ /* forma: FormGroup;
   generos
   
     constructor(private service: GenerosService) {
@@ -22,7 +22,7 @@ export class GenerosComponent  {
         console.log(data);
       });
 
-}
+}*/
 
 
 }

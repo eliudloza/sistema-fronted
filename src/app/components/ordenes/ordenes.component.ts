@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { EmpleadosService } from 'src/app/services/empleados.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { OrdenesService } from 'src/app/services/ordenes.service';
-import { ClientesService } from 'src/app/services/clientes.service';  
+ 
 
 @Component({
   selector: 'app-ordenes',
@@ -10,7 +7,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
   styleUrls: ['./ordenes.component.css']
 })
 export class OrdenesComponent {
-  forma: FormGroup;
+  /*forma: FormGroup;
   ordenes
   empleados
   clientes
@@ -37,6 +34,6 @@ export class OrdenesComponent {
         console.log(data);
       });
   
-     }
+     }*/
 
 }

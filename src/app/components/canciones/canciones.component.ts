@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { ProductosService } from 'src/app/services/productos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProveedoresService } from 'src/app/services/proveedores.service';
-import { GenerosService } from 'src/app/services/generos.service';
+
 
 @Component({
   selector: 'app-canciones',
@@ -10,7 +8,7 @@ import { GenerosService } from 'src/app/services/generos.service';
   styleUrls: ['./canciones.component.css']
 })
 export class CancionesComponent {
-  forma: FormGroup;
+ /* forma: FormGroup;
   productos
   proveedores
   generos
@@ -39,7 +37,7 @@ export class CancionesComponent {
       console.log(data);
     });
 
-   }
+   }*/
 
 
 }

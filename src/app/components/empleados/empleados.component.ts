@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmpleadosService } from 'src/app/services/empleados.service';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./empleados.component.css']
 })
 export class EmpleadosComponent  {
-  forma: FormGroup;
+  /*forma: FormGroup;
   empleados
   
     constructor(private service: EmpleadosService) {
@@ -27,6 +27,6 @@ export class EmpleadosComponent  {
         console.log(data);
       });
 
-    }
+    }*/
 
 }

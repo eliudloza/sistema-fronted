@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { DetallesService } from 'src/app/services/detalles.service';
-import { OrdenesService } from 'src/app/services/ordenes.service';
-import { ProductosService } from 'src/app/services/productos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
@@ -11,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./detalles.component.css']
 })
 export class DetallesComponent {
-  forma: FormGroup;
+  /*forma: FormGroup;
   detalles
   productos
   ordenes
@@ -39,7 +36,7 @@ export class DetallesComponent {
       console.log(data);
     });
 
-   }
+   }*/
 
 
 }

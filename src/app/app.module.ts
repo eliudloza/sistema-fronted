@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
-import { RouterModule, Routes} from '@angular/router'
-
 import { AppRoutingModule } from './app-routing.module';
+import {SocialLoginModule, AuthServiceConfig} from 'angularx-social-login';
+import {GoogleLoginProvider} from 'angularx-social-login';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -22,6 +23,18 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
 
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("75533910497-esahaqu5rvlsr9rg7s73tmkg9en0irpg.apps.googleusercontent.com")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
+
 
 @NgModule({
   declarations: [
@@ -38,16 +51,20 @@ import { DetallesComponent } from './components/detalles/detalles.component';
     EmpleadosComponent,
     OrdenesComponent,
     DetallesComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    SocialLoginModule
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

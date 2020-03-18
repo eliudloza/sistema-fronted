@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { ProveedoresService } from 'src/app/services/proveedores.service';
+
 
 @Component({
   selector: 'app-proveedores',
@@ -8,7 +8,7 @@ import { ProveedoresService } from 'src/app/services/proveedores.service';
   styleUrls: ['./proveedores.component.css']
 })
 export class ProveedoresComponent {
-  forma: FormGroup;
+  /*forma: FormGroup;
   proveedores
   
     constructor(private service: ProveedoresService) {
@@ -25,6 +25,6 @@ export class ProveedoresComponent {
         console.log(data);
       });
 
-}
+}*/
 }
 
