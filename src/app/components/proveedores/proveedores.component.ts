@@ -1,30 +1,40 @@
-import { Component} from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-
+import { Component, OnInit} from '@angular/core';
+import { ToditoService, Proveedor } from 'src/app/services/todito.service';
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-proveedores',
   templateUrl: './proveedores.component.html',
   styleUrls: ['./proveedores.component.css']
 })
-export class ProveedoresComponent {
-  /*forma: FormGroup;
-  proveedores
-  
-    constructor(private service: ProveedoresService) {
-      this.forma = new FormGroup({
-        'nombre': new FormControl('', [Validators.required,Validators.minLength(3)]),
-        'direccion': new FormControl('', Validators.required),
-        'ciudad': new FormControl('', Validators.required),
-        'compañia': new FormControl('', Validators.required),
-        'telefono': new FormControl('', Validators.required)
-      });
-  
-      this.service.getProveedor('/indexProvee').subscribe( (data: any) => {
-        this.proveedores = data;
-        console.log(data);
-      });
+export class ProveedoresComponent implements OnInit{
 
-}*/
+  elements:Proveedor={
+    nombre:'',
+    direccion:'',
+    ciudad:'',
+    compania:'',
+    telefono:0
+  }
+
+  public user:SocialUser;
+  public loggedIn: boolean;  
+  constructor(public servicio: ToditoService, public authService: AuthService) { }
+
+  ngOnInit(): void {
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+  }
+
+  postProvee(){
+    this.servicio.setProvee('/usuarios/creaprovee', this.elements).subscribe((res:any) =>{
+      console.log(res);
+    })
+  }
+ 
 }
 

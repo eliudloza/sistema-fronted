@@ -1,8 +1,9 @@
 export interface Canciones{
 
+    id:number
     nombre: string
     precio: number
     cantidad: number
-    genero: number
+    categoria: number
     proveedor: number
 }

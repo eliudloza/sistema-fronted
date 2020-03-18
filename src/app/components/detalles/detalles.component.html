@@ -1,1 +1,68 @@
-<p>detalles works!</p>
+<router-outlet></router-outlet>
+<div  class="card spur-card">
+
+    <div class="card-header">
+        
+        <div class="spur-card-title">
+            <i class="fas fa-list"></i> Insertar Detalles </div>
+  
+    </div>
+  
+    <div class="card-body ">
+  
+        <form (submit)="postDetalle()" class="action">
+  
+   
+            
+   
+  
+        <div class="form-group">
+  
+            <label for="exampleFormControlInput1">Precio:</label>
+    
+            <input type="text" class="form-control" name="precio" placeholder="" [(ngModel)]="elements.precio" >
+    
+        </div>
+        <div class="form-group">
+  
+            <label for="exampleFormControlInput1">Cantidad:</label>
+    
+            <input type="text" class="form-control" name="cantidad" placeholder="" [(ngModel)]="elements.cantidad" >
+    
+        </div>
+
+        <div class="form-group">
+
+            <label for="exampleFormControlSelect1">Canciones:</label>
+
+            <select class="form-control" id="exampleFormControlSelect1" name="canciones" [(ngModel)]="elements.producto">
+
+                <option [value]="item.id" *ngFor="let item of producto">{{item.nombre}}</option>
+
+            </select>
+
+
+
+        </div>
+  
+
+            <div class="form-group">
+  
+              <label for="exampleFormControlSelect1">Orden:</label>
+  
+              <select class="form-control" id="exampleFormControlSelect1" name="orden" [(ngModel)]="elements.orden">
+  
+                  <option [value]="item.id" *ngFor="let item of ordenes">{{item.fecha}}</option>
+  
+              </select> 
+  
+          </div>
+  
+  
+            <button type="submit" class="btn btn-warning">Guardar</button>
+  
+        </form>
+  
+    </div>
+  
+  </div>

@@ -21,16 +21,17 @@ const routes: Routes = [
    children:[
     {path: 'clientes', component: ClientesComponent},
     {path: 'empleados', component: EmpleadosComponent},
-    {path: 'generos', component: GenerosComponent}
+    {path: 'generos', component: GenerosComponent},
+    {path: 'proveedores', component: ProveedoresComponent},
+    {path: 'canciones', component: CancionesComponent},
+    {path: 'ordenes', component: OrdenesComponent},
+    {path: 'detalles', component: DetallesComponent}
   ]},
   {path: 'conocenos', component: ConocenosComponent},
-  {path: 'canciones', component: CancionesComponent},
-  
-  {path: 'proveedores', component: ProveedoresComponent},
   
   
-  {path: 'ordenar', component: OrdenesComponent},
-  {path: 'detalle', component: DetallesComponent}
+  
+  
 ];
 
 @NgModule({

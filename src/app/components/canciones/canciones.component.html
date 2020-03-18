@@ -1,1 +1,76 @@
-<p>canciones works!</p>
+<router-outlet></router-outlet>
+<div  class="card spur-card">
+
+    <div class="card-header">
+        
+        <div class="spur-card-title"> <i class="fas fa-file-audio"></i> Insertar Canciones </div>
+  
+    </div>
+  
+    <div class="card-body ">
+  
+        <form (submit)="postCanciones()" class="action">
+  
+   
+            
+   
+  
+        <div class="form-group">
+  
+            <label for="exampleFormControlInput1">Nombre:</label>
+    
+            <input type="text" class="form-control" name="nombre" placeholder="" [(ngModel)]="elements.nombre" >
+    
+        </div>
+
+            <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Precio Producto:</label>
+  
+                <input type="number" class="form-control" name="precio" placeholder="0" [(ngModel)]="elements.precio" >
+  
+            </div>
+
+            <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Cantidad Producto:</label>
+  
+                <input type="number" class="form-control" name="cantidad" placeholder="0" [(ngModel)]="elements.cantidad" >
+  
+            </div>
+
+            <div class="form-group">
+  
+                <label for="exampleFormControlSelect1">Genero:</label>
+  
+                <select class="form-control" id="exampleFormControlSelect1" name="categoria" [(ngModel)]="elements.categoria">
+  
+                    <option [value]="item.id" *ngFor="let item of categoria">{{item.nombre}}</option>
+  
+                </select>
+  
+   
+  
+            </div>
+  
+
+            <div class="form-group">
+  
+              <label for="exampleFormControlSelect1">Proveedor:</label>
+  
+              <select class="form-control" id="exampleFormControlSelect1" name="vendedor" [(ngModel)]="elements.proveedor">
+  
+                  <option [value]="item.id" *ngFor="let item of proveedores">{{item.nombre}}</option>
+  
+              </select> 
+  
+          </div>
+  
+  
+            <button type="submit" class="btn btn-warning">Guardar</button>
+  
+        </form>
+  
+    </div>
+  
+  </div>
