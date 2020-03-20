@@ -19,7 +19,6 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'conocenos', component: ConocenosComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
-<<<<<<< HEAD
    children: [
      {path: 'canciones', component: CancionesComponent},
      {path: 'clientes', component: ClientesComponent},
@@ -29,22 +28,6 @@ const routes: Routes = [
      {path: 'ordenar', component: OrdenesComponent},
      {path: 'detalle', component: DetallesComponent}
   ]},
-=======
-   children:[
-    {path: 'clientes', component: ClientesComponent},
-    {path: 'empleados', component: EmpleadosComponent},
-    {path: 'generos', component: GenerosComponent},
-    {path: 'proveedores', component: ProveedoresComponent},
-    {path: 'canciones', component: CancionesComponent},
-    {path: 'ordenes', component: OrdenesComponent},
-    {path: 'detalles', component: DetallesComponent}
-  ]},
-  {path: 'conocenos', component: ConocenosComponent},
-  
-  
-  
-  
->>>>>>> e51d5ab3e36eca514a159c134fe71291c5d6645b
 ];
 
 @NgModule({
