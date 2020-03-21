@@ -9,11 +9,8 @@
             Insertar Generos </div>
   
     </div>
-  
     <div class="card-body ">
-  
         <form (submit)="postCate()" class="action">
-  
             <div class="form-group">
   
                 <label for="exampleFormControlInput1">Nombre:</label>
@@ -48,7 +45,7 @@
                 <td>{{item.nombre}}</td>
                 <td>{{item.descripcion}}</td>
                 <td>
-                    <button type="button" class="btn btn-danger waves-effect" (click)="Eliminar(categoria.nombre)">Eliminar</button>
+                    <button type="button" class="btn btn-danger waves-effect" (click)="Eliminar(categoria.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>

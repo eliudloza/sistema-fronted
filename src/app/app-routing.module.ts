@@ -30,10 +30,6 @@ const routes: Routes = [
   ]},
   {path: 'conocenos', component: ConocenosComponent},
   
-  
-  
-  
-
 ];
 
 @NgModule({
