@@ -10,9 +10,10 @@ import { SocialUser } from "angularx-social-login";
 })
 export class GenerosComponent implements OnInit {
 
-
+  categoria: Categoria []=[];
+  
   elements:Categoria={
-
+    id:0,
     nombre:'',
     descripcion:''
   }
@@ -32,9 +33,14 @@ export class GenerosComponent implements OnInit {
   postCate(){
     this.servicio.setCate('/usuarios/creaCate', this.elements).subscribe((res:any) =>{
       console.log(res);
+    });
+  
+  }
+  Eliminar(id: number){
+    console.log(id)
+    this.servicio.deleteCate('/usuarios/eliminaCate/' + id).subscribe((res:any) =>{
+      console.log(res)
     })
-  
-  
   }
 
 }

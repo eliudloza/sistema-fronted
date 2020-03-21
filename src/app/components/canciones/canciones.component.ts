@@ -21,7 +21,7 @@ export class CancionesComponent implements OnInit{
     precio: 0,
     cantidad: 0,
     categoria: 0,
-    proveedor:0
+    vendedor:0
   }
 
   constructor(public servicio: ToditoService, public authService: AuthService) {

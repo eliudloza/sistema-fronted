@@ -24,6 +24,7 @@ export interface Empleados{
 }
 
 export interface Categoria{
+    id:number
     nombre:string
     descripcion:string
 }
@@ -41,7 +42,7 @@ export interface Canciones{
     precio: number
     cantidad: number
     categoria: number
-    proveedor: number
+    vendedor: number
 }
 
 export interface Ordenes{
@@ -86,6 +87,12 @@ export class ToditoService{
 
     setCate(url: string, cat:Categoria):Observable<any>{
         return this.http.post(url, cat)
+    }
+    updateCate(url: string, cat:Categoria):Observable<any>{
+        return this.http.post(url,cat)
+    }
+    deleteCate(url: string):Observable<any>{
+        return this.http.delete(url)
     }
 
     getProvee(url: string){

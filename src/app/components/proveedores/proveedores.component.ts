@@ -31,7 +31,7 @@ export class ProveedoresComponent implements OnInit{
   }
 
   postProvee(){
-    this.servicio.setProvee('/usuarios/creaprovee', this.elements).subscribe((res:any) =>{
+    this.servicio.setProvee('/usuarios/crearVendedor', this.elements).subscribe((res:any) =>{
       console.log(res);
     })
   }

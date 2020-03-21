@@ -5,5 +5,5 @@ export interface Canciones{
     precio: number
     cantidad: number
     categoria: number
-    proveedor: number
+    vendedor: number
 }
