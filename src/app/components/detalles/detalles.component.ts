@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToditoService, Detalle} from 'src/app/services/todito.service';
-import { Ordenes } from 'src/app/components/ordenes/ordenes';
+import { Ordene } from 'src/app/components/ordenes/ordenes';
 
 
 

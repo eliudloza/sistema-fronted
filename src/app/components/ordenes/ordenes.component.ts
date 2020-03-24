@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToditoService, Ordenes} from 'src/app/services/todito.service';
-import { Empleados } from 'src/app/components/empleados/empleados'
+import { Empleado } from 'src/app/components/empleados/empleados'
 import { Clientes } from 'src/app/components/clientes/clientes'
+import { Ordene } from 'src/app/components/ordenes/ordenes'
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
  
@@ -13,13 +14,17 @@ import { SocialUser } from "angularx-social-login";
 })
 export class OrdenesComponent implements OnInit {
   
-  empleados:Empleados[]=[]
+  empleados:Empleado[]=[]
   clientes:Clientes[]=[]
+  ordenes:Ordene[]=[]
+  editar = false;
+  idx:number;
+
 
   elements:Ordenes={
     fecha:'',
-    empleado:0,
-    cliente:0
+    empleado:'',
+    cliente:''
   }
 
   constructor(public servicio: ToditoService, public authService: AuthService) {
@@ -44,6 +49,9 @@ export class OrdenesComponent implements OnInit {
        this.user = user;
        this.loggedIn = (user != null);
      });
+     this.servicio.getOrden('/usuarios/indexOrden').subscribe((res : any) =>{
+      this.ordenes=res;
+    })
   }
 
 
@@ -53,6 +61,33 @@ export class OrdenesComponent implements OnInit {
       console.log(res);
 
     });
+  }
+
+  
+  Eliminar( id: number ) {
+    console.log(id);
+    this.servicio.deleteOrden('/usuarios/eliminaOrden/'+id).subscribe( (data: any) => {
+      console.log(data);
+    });
+
+  }
+
+  Editar(orde : Ordene){
+
+    this.editar=true;
+    this.elements.fecha=(orde.fecha);
+    this.elements.empleado=(orde.empleado);
+    this.elements.cliente=(orde.cliente);
+    this.idx = orde.id
+  }
+
+  update(idx:number){
+    //console.log(id)
+    if(this.elements){
+      this.servicio.updateOrden('/usuarios/actualizaOrden/'+ idx, this.elements).subscribe((res : any) =>{
+        console.log(res);
+      })
+    }
   }
 
 }

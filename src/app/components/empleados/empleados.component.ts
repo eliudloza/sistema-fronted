@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToditoService, Empleados } from 'src/app/services/todito.service';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import {Empleado } from 'src/app/components/empleados/empleados';
 
 @Component({
   selector: 'app-empleados',
@@ -10,6 +11,10 @@ import { SocialUser } from "angularx-social-login";
 })
 export class EmpleadosComponent implements OnInit {
  
+  empleados: Empleado []=[];
+  editar = false;
+  idx:number;
+
   elements:Empleados={
 
     nombre:'',
@@ -30,14 +35,45 @@ export class EmpleadosComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
+
+    this.servicio.getEmpleado('/usuarios/indexEmple').subscribe((res : any) =>{
+      this.empleados=res;
+    })
   }
 
   postEmpleado(){
     this.servicio.setEmpleado('/usuarios/crearEmpleado', this.elements).subscribe((res:any) =>{
       console.log(res);
-    })
-  
-  
+    });
+  }
+
+  Eliminar( id: number ) {
+    console.log(id);
+    this.servicio.deleteEmpleado('/usuarios/eliminaEmple/'+id).subscribe( (data: any) => {
+      console.log(data);
+    });
+
+  }
+
+  Editar(empl : Empleado){
+
+    this.editar=true;
+    this.elements.nombre=(empl.nombre);
+    this.elements.ap_paterno=(empl.ap_paterno);
+    this.elements.ap_materno=(empl.ap_materno);
+    this.elements.direccion=(empl.direccion);
+    this.elements.ciudad=(empl.ciudad);
+    this.elements.tel=(empl.tel);
+    this.idx = empl.id
+  }
+
+  update(idx:number){
+    //console.log(id)
+    if(this.elements){
+      this.servicio.updateCliente('/usuarios/actualizaEmple/'+ idx, this.elements).subscribe((res : any) =>{
+        console.log(res);
+      })
+    }
   }
 
 }

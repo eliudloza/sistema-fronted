@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToditoService, Canciones} from 'src/app/services/todito.service';
 import { Proveedore } from 'src/app/components/proveedores/proveedores'
-import { Categoria } from 'src/app/components/generos/categorias'
+import { Categorias } from 'src/app/components/generos/categorias'
 import { Cancion } from 'src/app/components/canciones/canciones';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
@@ -15,7 +15,7 @@ import { SocialUser } from "angularx-social-login";
 export class CancionesComponent implements OnInit{
  
   proveedores:Proveedore[]=[];
-  categoria:Categoria[]=[];
+  categoria:Categorias[]=[];
   canciones:Cancion[] = [];
   editar = false;
   idx:number;

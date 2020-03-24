@@ -1,6 +1,6 @@
-export interface Ordenes{
+export interface Ordene{
     id:number
     fecha:string
-    empleado:number
-    cliente:number
+    empleado:string
+    cliente:string
 }

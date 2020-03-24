@@ -24,7 +24,6 @@ export interface Empleados{
 }
 
 export interface Categoria{
-    id:number
     nombre:string
     descripcion:string
 }
@@ -46,8 +45,8 @@ export interface Canciones{
 
 export interface Ordenes{
     fecha:string
-    empleado:number
-    cliente:number
+    empleado:string
+    cliente:string
 }
 
 export interface Detalle{
@@ -89,6 +88,13 @@ export class ToditoService{
     setEmpleado(url: string, emp:Empleados):Observable<any>{
         return this.http.post(url, emp)
     }
+    updateEmpleado(url: string, emp:Empleados):Observable<any>{
+        return this.http.post(url,emp)
+    }
+    deleteEmpleado(url: string):Observable<any>{
+        return this.http.delete(url)
+    }
+
 
 
 
@@ -148,6 +154,13 @@ export class ToditoService{
     setOrden(url: string, orden:Ordenes):Observable<any>{
         return this.http.post(url, orden)
     }
+    deleteOrden(url: string): Observable<any> {
+        return this.http.delete(url);
+    }
+
+    updateOrden(url: string, orden:Ordenes):Observable<any>{
+        return this.http.post(url,orden)
+    }
 
 
 
@@ -157,5 +170,12 @@ export class ToditoService{
 
     setDetalle(url: string, detalle:Detalle):Observable<any>{
         return this.http.post(url, detalle)
+    }
+    deleteDetalle(url: string): Observable<any> {
+        return this.http.delete(url);
+    }
+
+    deleteDEtalle(url: string, detalle:Detalle):Observable<any>{
+        return this.http.post(url,detalle)
     }
 }
