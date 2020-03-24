@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToditoService, Canciones} from 'src/app/services/todito.service';
 import { Proveedore } from 'src/app/components/proveedores/proveedores'
 import { Categoria } from 'src/app/components/generos/categorias'
+import { Cancion } from 'src/app/components/canciones/canciones';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 
@@ -13,15 +14,18 @@ import { SocialUser } from "angularx-social-login";
 })
 export class CancionesComponent implements OnInit{
  
-  proveedores:Proveedore[]=[]
-  categoria:Categoria[]=[]
+  proveedores:Proveedore[]=[];
+  categoria:Categoria[]=[];
+  canciones:Cancion[] = [];
+  editar = false;
+  idx:number;
 
   elements:Canciones={
     nombre: '',
     precio: 0,
     cantidad: 0,
-    categoria: 0,
-    vendedor:0
+    categoria: '',
+    vendedor:''
   }
 
   constructor(public servicio: ToditoService, public authService: AuthService) {
@@ -38,14 +42,10 @@ export class CancionesComponent implements OnInit{
   });
 }
 
-  public user: SocialUser;
-  public loggedIn: boolean;
   ngOnInit(): void {
-
- this.authService.authState.subscribe((user) => {
-       this.user = user;
-       this.loggedIn = (user != null);
-     });
+    this.servicio.getCancion('/usuarios/indexProduc').subscribe((res : any) =>{
+      this.canciones=res;
+    })
   }
 
 
@@ -57,4 +57,31 @@ export class CancionesComponent implements OnInit{
     });
   }
 
+  Eliminar( id: number ) {
+    console.log(id);
+    this.servicio.deleteCancion('/usuarios/eliminaProduc/'+id).subscribe( (data: any) => {
+      console.log(data);
+    });
+
+  }
+
+  Editar(canciones : Cancion){
+
+    this.editar=true;
+    this.elements.nombre=(canciones.nombre);
+    this.elements.precio=(canciones.precio);
+    this.elements.cantidad=(canciones.cantidad);
+    this.elements.categoria=(canciones.categoria);
+    this.elements.vendedor=(canciones.vendedor);
+    this.idx = canciones.id
+  }
+
+  update(idx:number){
+    //console.log(idx)
+    if(this.elements){
+      this.servicio.updateCancion('/usuarios/actualizaProduc/'+ idx, this.elements).subscribe((res : any) =>{
+        console.log(res);
+      })
+    }
+  }
 }

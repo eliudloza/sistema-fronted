@@ -31,8 +31,10 @@ export class GenerosComponent implements OnInit {
   }
 
   postCate(){
-    this.servicio.setCate('/usuarios/creaCate', this.elements).subscribe((res:any) =>{
+    this.servicio.setCate('/usuarios/creaCate',this.elements).subscribe((res:any)=>{
+
       console.log(res);
+
     });
   
   }

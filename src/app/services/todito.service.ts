@@ -31,18 +31,17 @@ export interface Categoria{
 
 export interface Proveedor{
     nombre:string
-	direccion:string
-    ciudad:string
-    compania:string
-	telefono: number
+	biografia:string
+    pais:string
+   
 }
 
 export interface Canciones{
     nombre: string
     precio: number
     cantidad: number
-    categoria: number
-    vendedor: number
+    categoria: string
+    vendedor: string
 }
 
 export interface Ordenes{
@@ -73,6 +72,16 @@ export class ToditoService{
         return this.http.post(url, client)
     }
 
+    updateCliente(url: string, client:Cliente):Observable<any>{
+        return this.http.post(url,client)
+    }
+
+    deleteCliente(url: string):Observable<any>{
+        return this.http.delete(url)
+    }
+
+
+
     getEmpleado(url:string){
         return this.http.get(url);
     }
@@ -81,10 +90,11 @@ export class ToditoService{
         return this.http.post(url, emp)
     }
 
+
+
     getCate(url: string){
         return this.http.get(url)
     }
-
     setCate(url: string, cat:Categoria):Observable<any>{
         return this.http.post(url, cat)
     }
@@ -95,6 +105,8 @@ export class ToditoService{
         return this.http.delete(url)
     }
 
+
+
     getProvee(url: string){
         return this.http.get(url)
     }
@@ -102,6 +114,14 @@ export class ToditoService{
     setProvee(url: string, prov:Proveedor):Observable<any>{
         return this.http.post(url, prov)
     }
+    deleteProvee(url: string): Observable<any> {
+        return this.http.delete(url);
+    }
+
+    updateProvee(url: string, prov:Proveedor):Observable<any>{
+        return this.http.post(url,prov)
+    }
+
 
     getCancion(url: string){
         return this.http.get(url)
@@ -111,6 +131,16 @@ export class ToditoService{
         return this.http.post(url, can)
     }
 
+    deleteCancion(url: string): Observable<any> {
+        return this.http.delete(url);
+    }
+
+    updateCancion(url: string, client:Canciones):Observable<any>{
+        return this.http.post(url,client)
+    }
+
+
+
     getOrden(url: string){
         return this.http.get(url)
     }
@@ -118,6 +148,8 @@ export class ToditoService{
     setOrden(url: string, orden:Ordenes):Observable<any>{
         return this.http.post(url, orden)
     }
+
+
 
     getDetalle(url: string){
         return this.http.get(url)

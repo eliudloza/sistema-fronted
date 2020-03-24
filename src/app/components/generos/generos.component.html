@@ -32,23 +32,27 @@
         </form>
   
     </div>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripcion</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of categoria">
-                <td>{{item.nombre}}</td>
-                <td>{{item.descripcion}}</td>
-                <td>
-                    <button type="button" class="btn btn-danger waves-effect" (click)="Eliminar(categoria.id)">Eliminar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
   
   </div>
+  <div class="table-responsive">
+    <table class="table table-sm">
+      <thead class="thead bg-dark text-white">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Eliminar</th>
+        <th scope="col">Editar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let items of categoria">
+        <td>{{items.nombre}}</td>
+        <td>{{items.descripcion}}</td>
+        <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button></td>
+        <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#rocketModal"><i class="fas fa-pen"></i> Editar</button></td>
+      </tr>
+  
+      </tbody>
+    </table>
+  </div>
+  

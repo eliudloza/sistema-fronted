@@ -1,76 +1,156 @@
+<style>
+    .azul{
+        background-color: #155A6E;
+        color: #fff;
+    }
+
+    .izquierda{
+        right: 260px;
+    }
+    .derecha{
+        left: 270px;
+        margin-top: -550px;
+    }
+
+    .negro{
+        background-color: #000;
+        color: #fff;
+    }
+
+    .gris{
+        background-color: rgb(163, 163, 163);
+    }
+</style>
 <router-outlet></router-outlet>
-<div  class="card spur-card">
-
-    <div class="card-header">
-        
-        <div class="spur-card-title"> <i class="fas fa-file-audio"></i> Insertar Canciones </div>
-  
-    </div>
-  
-    <div class="card-body ">
-  
-        <form (submit)="postCanciones()" class="action">
-  
-   
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 izquierda">
             
-   
+            <div  class="card spur-card">
+                <div class="card-header text-center">
+                    <div class="spur-card-title negro">
+                        <i class="fas fa-music"></i> Insertar Canciones </div>
+            </div>
+            
+            <div class="card-body ">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        
+                        <form  class="action form-horizontal">
+                            
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Nombre:</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="" [(ngModel)]="elements.nombre" >
+                            </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Precio Producto:</label>
+        
+                        <input type="number" class="form-control" name="precio" placeholder="0" [(ngModel)]="elements.precio" >
+        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Cantidad Producto:</label>
+                        <input type="number" class="form-control" name="cantidad" placeholder="0" [(ngModel)]="elements.cantidad" >
+                    </div>
+
+                    <div class="form-group">
+        
+                        <label for="exampleFormControlSelect1">Genero:</label>
+        
+                        <select class="form-control" id="exampleFormControlSelect1" name="categoria" [(ngModel)]="elements.categoria">
+        
+                            <option [value]="item.id" *ngFor="let item of categoria">{{item.nombre}}</option>
+        
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+        
+                        <label for="exampleFormControlSelect1">Proveedor:</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="vendedor" [(ngModel)]="elements.vendedor">
+                            <option [value]="item.id" *ngFor="let item of proveedores">{{item.nombre}}</option>
+        
+                        </select> 
+        
+                    </div>
+
+            <button *ngIf="editar == false" type="submit" class="btn azul btn-md" (click)="postCanciones()">Agregar</button>
+
+            <button *ngIf="editar == true" type="submit" class="btn btn-warning" (click)="update(idx)">
+              
+              <span>Guardar Cambios</span>
+          </button>
+                </form>
+                    </div>
+                </div>
+            </div>
   
-        <div class="form-group">
-  
-            <label for="exampleFormControlInput1">Nombre:</label>
-    
-            <input type="text" class="form-control" name="nombre" placeholder="" [(ngModel)]="elements.nombre" >
-    
+            </div>
         </div>
-
-            <div class="form-group">
-  
-                <label for="exampleFormControlInput1">Precio Producto:</label>
-  
-                <input type="number" class="form-control" name="precio" placeholder="0" [(ngModel)]="elements.precio" >
-  
-            </div>
-
-            <div class="form-group">
-  
-                <label for="exampleFormControlInput1">Cantidad Producto:</label>
-  
-                <input type="number" class="form-control" name="cantidad" placeholder="0" [(ngModel)]="elements.cantidad" >
-  
-            </div>
-
-            <div class="form-group">
-  
-                <label for="exampleFormControlSelect1">Genero:</label>
-  
-                <select class="form-control" id="exampleFormControlSelect1" name="categoria" [(ngModel)]="elements.categoria">
-  
-                    <option [value]="item.id" *ngFor="let item of categoria">{{item.nombre}}</option>
-  
-                </select>
-  
-   
-  
-            </div>
-  
-
-            <div class="form-group">
-  
-              <label for="exampleFormControlSelect1">Proveedor:</label>
-  
-              <select class="form-control" id="exampleFormControlSelect1" name="vendedor" [(ngModel)]="elements.vendedor">
-  
-                  <option [value]="item.id" *ngFor="let item of proveedores">{{item.nombre}}</option>
-  
-              </select> 
-  
-          </div>
-  
-  
-            <button type="submit" class="btn btn-warning">Guardar</button>
-  
-        </form>
-  
     </div>
+   
+
+<div class="row justify-content-center">
+    <div class="col-6 derecha">
+<div  class="card spur-card">
+    <div class="card-header text-center">
+        <div class="spur-card-title negro"> 
+            <i class="fas fa-user-edit"></i> <i class="fas fa-music"></i> Modi Canciones </div>
+        
+<br>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <thead class="thead gris text-white">
+      <tr >
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Genero</th>
+        <th scope="col">vendedor</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody  *ngFor="let items of canciones">
+      <tr>
+        <td class="text-left">
+            <a  (click)="Editar(items)">
+                
+            <input *ngIf="items===canciones"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.nombre}}
+        </a></td>
+        <td class="text-left">
+            <a  (click)="Editar(items)">
+            
+            <input *ngIf="items===canciones"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.precio}}
+        </a></td>
+        <td class="text-left">
+            <a  (click)="Editar(items)">
+            
+            <input *ngIf="items===canciones"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.cantidad}}
+        </a></td>
+        <td class="text-left">
+            <a  (click)="Editar(items)">
+            
+            <input *ngIf="items===canciones"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.categoria}}
+        </a></td>
+        <td class="text-left">
+            <a  (click)="Editar(items)">
+            
+            <input *ngIf="items===canciones"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.vendedor}}
+        </a></td>
+        <td><button type="button" class="btn btn-danger" (click)="Eliminar(items.id)" ><i class="fas fa-trash-alt"></i> Elimina</button></td>
+      </tr>
+      
   
+      </tbody>
+    </table>
   </div>
+</div>
+</div>
+    </div>
+
+
+</div>
+    

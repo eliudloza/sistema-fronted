@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ToditoService, Proveedor } from 'src/app/services/todito.service';
+import { Proveedore } from 'src/app/components/proveedores/proveedores'
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 
@@ -10,12 +11,14 @@ import { SocialUser } from "angularx-social-login";
 })
 export class ProveedoresComponent implements OnInit{
 
+  proveedores:Proveedore[]=[];
+  editar = false;
+  idx:number;
   elements:Proveedor={
     nombre:'',
-    direccion:'',
-    ciudad:'',
-    compania:'',
-    telefono:0
+    biografia:'',
+    pais:''
+    
   }
 
   public user:SocialUser;
@@ -28,6 +31,10 @@ export class ProveedoresComponent implements OnInit{
       this.user = user;
       this.loggedIn = (user != null);
     });
+
+    this.servicio.getProvee('/usuarios/indexProvee').subscribe((res : any) =>{
+      this.proveedores=res;
+    })
   }
 
   postProvee(){
@@ -36,5 +43,30 @@ export class ProveedoresComponent implements OnInit{
     })
   }
  
+  Eliminar( id: number ) {
+    console.log(id);
+    this.servicio.deleteProvee('/usuarios/eliminaVendedor/'+id).subscribe( (data: any) => {
+      console.log(data);
+    });
+
+  }
+
+  Editar(artistas : Proveedore){
+
+    this.editar=true;
+    this.elements.nombre=(artistas.nombre);
+    this.elements.biografia=(artistas.biografia);
+    this.elements.pais=(artistas.pais);
+    this.idx = artistas.id
+  }
+
+  update(idx:number){
+    //console.log(idx)
+    if(this.elements){
+      this.servicio.updateProvee('/usuarios/actualizaVendedor/'+ idx, this.elements).subscribe((res : any) =>{
+        console.log(res);
+      })
+    }
+  }
 }
 

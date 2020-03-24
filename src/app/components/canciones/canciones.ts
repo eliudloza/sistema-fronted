@@ -1,9 +1,9 @@
-export interface Canciones{
+export interface Cancion{
 
     id:number
     nombre: string
     precio: number
     cantidad: number
-    categoria: number
-    vendedor: number
+    categoria: string
+    vendedor: string
 }

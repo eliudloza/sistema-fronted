@@ -25,8 +25,8 @@ const routes: Routes = [
     {path: 'generos', component: GenerosComponent},
     {path: 'proveedores', component: ProveedoresComponent},
     {path: 'canciones', component: CancionesComponent},
-    {path: 'ordenes', component: OrdenesComponent},
-    {path: 'detalles', component: DetallesComponent}
+    {path: 'ordenar', component: OrdenesComponent},
+    {path: 'detalle', component: DetallesComponent}
   ]},
   {path: 'conocenos', component: ConocenosComponent},
   
