@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService2 } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( public auth: AuthService ) { }
+  constructor( public auth: AuthService2 ) { }
 
   ngOnInit() {
     // this.auth.handleAuthCallback();

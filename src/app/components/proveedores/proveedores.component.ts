@@ -40,7 +40,8 @@ export class ProveedoresComponent implements OnInit{
   postProvee(){
     this.servicio.setProvee('/usuarios/crearVendedor', this.elements).subscribe((res:any) =>{
       console.log(res);
-    })
+    });
+    window.location.reload();
   }
  
   Eliminar( id: number ) {
@@ -48,6 +49,7 @@ export class ProveedoresComponent implements OnInit{
     this.servicio.deleteProvee('/usuarios/eliminaVendedor/'+id).subscribe( (data: any) => {
       console.log(data);
     });
+    window.location.reload();
 
   }
 
@@ -65,8 +67,9 @@ export class ProveedoresComponent implements OnInit{
     if(this.elements){
       this.servicio.updateProvee('/usuarios/actualizaVendedor/'+ idx, this.elements).subscribe((res : any) =>{
         console.log(res);
-      })
+      });
     }
+    window.location.reload();
   }
 }
 

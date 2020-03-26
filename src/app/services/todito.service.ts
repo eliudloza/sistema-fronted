@@ -52,8 +52,8 @@ export interface Ordenes{
 export interface Detalle{
     precio: number
     cantidad : number
-    producto : number
-    orden : number
+    producto : string
+    orden : string
 }
 @Injectable({
 
@@ -175,7 +175,7 @@ export class ToditoService{
         return this.http.delete(url);
     }
 
-    deleteDEtalle(url: string, detalle:Detalle):Observable<any>{
+    updateDetalle(url: string, detalle:Detalle):Observable<any>{
         return this.http.post(url,detalle)
     }
 }

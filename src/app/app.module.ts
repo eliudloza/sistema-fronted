@@ -22,6 +22,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
+import { TablaComponent } from './components/tabla/tabla.component';
 
 const config = new AuthServiceConfig([
   {
@@ -51,6 +52,7 @@ export function provideConfig() {
     EmpleadosComponent,
     OrdenesComponent,
     DetallesComponent,
+    TablaComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,7 +21,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/img"
             ],
             "styles": [
               "node_modules/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css",

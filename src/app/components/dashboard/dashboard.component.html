@@ -1,5 +1,14 @@
 <!-- Page Wrapper -->
-
+<style>
+  #colores{
+    color: #ff6600;
+    font-weight: bold;
+  }
+  #t{
+    color: #ffffff;
+    font-weight: bold;
+  }
+</style>
 <div id="wrapper">
 
   <!-- Sidebar -->
@@ -10,18 +19,14 @@
       <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-headphones"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">Tu música!</div>
+      <div class="sidebar-brand-text mx-3">MusicWorld</div>
     </span>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Inicio</span></a>
-    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -33,15 +38,15 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/canciones"  data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+      <a class="nav-link collapsed " id="y" routerLink="/dashboard/canciones"  data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-music"></i>
-        <span>Canciones</span>
+        <span>  Canciones</span>
       </a>
     </li>
 
     <!-- Nav Item - Clientes Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/clientes">
+      <a class="nav-link collapsed" id="y" routerLink="/dashboard/clientes">
         <i class="fas fa-users"></i>
         <span>Clientes</span>
       </a>
@@ -49,7 +54,7 @@
 
     <!--Proveedores-->
     <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/proveedores"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" id="y" routerLink="/dashboard/proveedores"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-female"></i><i class="fas fa-male"></i>
         <span>Artistas</span>
       </a>
@@ -57,7 +62,7 @@
 
      <!--Empleados-->
      <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/empleados"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" id="y" routerLink="/dashboard/empleados"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-id-card"></i>
         <span>Empleados</span>
       </a>
@@ -65,7 +70,7 @@
 
     <!--Generos-->
     <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/generos"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" id="y" routerLink="/dashboard/generos"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-icons"></i>
         <span>Generos</span>
       </a>
@@ -73,7 +78,7 @@
 
      <!--Ordenar-->
     <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/ordenar"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" id="y" routerLink="/dashboard/ordenar"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-list"></i>
         <span>Ordenar</span>
       </a>
@@ -82,7 +87,7 @@
 
      <!--Detalle-->
      <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/dashboard/detalle"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link collapsed" id="y" routerLink="/dashboard/detalle"  data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-clipboard-list"></i>
         <span>Detalle de Orden</span>
       </a>
@@ -104,24 +109,13 @@
       <!-- Topbar -->
       <nav class="navbar navbar-expand navbar-light gris topbar mb-4 static-top shadow">
 
-        <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-          <i class="fa fa-bars"></i>
-        </button>
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
-          <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Nav Item - User Information -->
-          <li class="nav-item dropdown no-arrow">
-
-
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt text-gray-400"></i>
-                Cerrar Sesión
-              </button>
+          <li class="nav-item dropdown">
+            <a class="dropdown-item" routerLink="/login" id="colores" (click)="auth.logout()" ><i class="fas fa-sign-out-alt"></i>Cerrar Sesión</a>
 
             <!-- Dropdown - User Information -->
 
@@ -135,7 +129,7 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
 
-        <!-- Page Heading -->
+
         <router-outlet></router-outlet>
 
 
@@ -159,29 +153,3 @@
   <!-- End of Content Wrapper -->
 
 </div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Listo para irse?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body letra">Seleccione "Cerrar sesión" si está listo para finalizar su sesión.</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-danger" routerLink="/login" (click)="auth.logout()" *ngIf="auth.loggedIn">Cerrar sesion</button>
-      </div>
-    </div>
-  </div>
-</div>
-

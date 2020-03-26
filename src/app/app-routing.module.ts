@@ -12,13 +12,17 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { GenerosComponent } from './components/generos/generos.component';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
+import { TablaComponent } from './components/tabla/tabla.component';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'conocenos', component: ConocenosComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+  {
+    path: 'tabla', component: TablaComponent
+  },
+  {path: 'dashboard', component: DashboardComponent,
   children:[
     {path: 'clientes', component: ClientesComponent},
     {path: 'empleados', component: EmpleadosComponent},

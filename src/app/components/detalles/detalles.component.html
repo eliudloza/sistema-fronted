@@ -1,98 +1,130 @@
-<!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Detalles de la orden</h1>
+<style>
+  .azul{
+      background-color: #155A6E;
+      color: #fff;
+  }
+  .negro{
+      background-color: #000;
+      color: #fff;
+  }
 
-<button type="button" class="btn btn-sm btn-success btn-icon-split mb-4" data-toggle="modal" data-target="#rocketModal">
-  <span class="icon text-white-50">
-      <i class="fas fa-plus"></i>
-  </span>
-  <span class="text">
-      Crear detalle de orden
-  </span>
-</button>
+  .gris{
+      background-color: rgb(163, 163, 163);
+  }
+</style>
+<router-outlet></router-outlet>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+      <div class="col">
 
-<!-- Add Rocket Modal -->
-<div class="modal fade" id="rocketModal" tabindex="-1" role="dialog" aria-labelledby="rocketModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rocketModalLabel">Cohete</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" class="form-control">
+<div class="card spur-card">
+
+    <div class="card-header">
+  
+  
+        <div class="spur-card-title">
+          <i class="fas fa-icons"></i>
+            Insertar Detalles de Orden </div>
+  
+    </div>
+    <div class="card-body ">
+        <form class="action form-horizontal">
+            <div class="form-group">
+  
+                <label for="exampleFormControlInput1">Precio:</label>
+  
+                <input type="number" class="form-control" name="precio" placeholder="$ 0.00" [(ngModel)]="elements.precio">
+  
+            </div>
+            <div class="form-group">
+  
+              <label for="exampleFormControlInput1">Cantidad:</label>
+
+              <input type="number" class="form-control" name="cantidad" placeholder=" 0" [(ngModel)]="elements.cantidad">
+
+          </div>
+  
+            <div class="form-group">
+        
+              <label for="exampleFormControlSelect1">Cancion:</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="producto" [(ngModel)]="elements.producto">
+                  <option [value]="item.id" *ngFor="let item of canciones">{{item.nombre}}</option>
+
+              </select> 
+
+          </div>
+          <div class="form-group">
+        
+            <label for="exampleFormControlSelect1">Orden:</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="orden" [(ngModel)]="elements.orden">
+                <option [value]="item.id" *ngFor="let item of ordenes">{{item.fecha}}</option>
+
+            </select> 
+
         </div>
-        <div class="form-group">
-          <label for="desc">Description</label>
-          <input type="text" id="desc" name="desc" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="status">Status</label>
-          <input type="text" id="status" name="status" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="country">Country</label>
-          <input type="text" id="country" name="country" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="height">Height</label>
-          <input type="text" id="height" name="height" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="diameter">Diameter</label>
-          <input type="text" id="diameter" name="diameter" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="mass">Mass</label>
-          <input type="text" id="mass" name="mass" class="form-control">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <input
-          data-dismiss="modal"
-          type="button"
-          value="Guardar"
-          class="btn btn-success">
-        <ng-template #editInput>
-          <input
-            data-dismiss="modal"
-            type="button"
-            value="Editar"
-            class="btn btn-info text-light"
-          >
-        </ng-template>
+            <button *ngIf="editar == false" type="submit" class="btn azul" (click)="postDetalle()">Agregar</button>
+
+            <button *ngIf="editar == true" type="submit" class="btn btn-warning" (click)="update(idx)">
+              
+              <span>Guardar Cambios</span>
+          </button>
+  
+        </form>
+  
+    </div>
+  
+    <div class="row justify-content-center">
+      <div class="col">
+          <br>
+    <div class="table-responsive">
+      <table class="table table-hover table-sm text-center">
+          <thead class="thead gris text-white">
+        <tr >
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad </th>
+          <th scope="col">Cancion </th>
+          <th scope="col">Orden </th>
+          <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody  *ngFor="let items of detalles">
+        <tr>
+          <td class="text-center">
+              <a  (click)="Editar(items)">
+                  
+              <input *ngIf="items===detalles"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.precio}}
+          </a></td>
+          <td class="text-center">
+              <a  (click)="Editar(items)">
+              
+              <input *ngIf="items===detalles"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.cantidad}}
+          </a></td>
+          <td class="text-center">
+            <a  (click)="Editar(items)">
+            
+            <input *ngIf="items===detalles"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.producto}}
+        </a></td>
+
+        <td class="text-center">
+          <a  (click)="Editar(items)">
+          
+          <input *ngIf="items===detalles"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.fecha}}
+      </a></td>
+    
+          <td><button type="button" class="btn btn-danger" (click)="Eliminar(items.id)" ><i class="fas fa-trash-alt"></i> Elimina</button></td>
+        </tr>
+        
+    
+        </tbody>
+      </table>
+    </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- {{form.valid}} -->
-<!-- End of Add Rocket Modal -->
-<div class="table-responsive">
-  <table class="table table-sm">
-    <thead class="thead bg-dark text-white">
-    <tr>
-      <th scope="col">precio</th>
-      <th scope="col">cantidad</th>
-      <th scope="col">producto</th>
-      <th scope="col">orden</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button" class="btn btn-danger">Delete</button></td>
-      <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#rocketModal">Editar</button></td>
-    </tr>
-
-    </tbody>
-  </table>
-</div>
+    
+                  </div>
+              </div>
+    
+              </div>
+          </div>
+      
+    

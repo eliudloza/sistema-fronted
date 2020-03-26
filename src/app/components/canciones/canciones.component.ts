@@ -55,6 +55,7 @@ export class CancionesComponent implements OnInit{
       console.log(res);
 
     });
+    window.location.reload();
   }
 
   Eliminar( id: number ) {
@@ -62,6 +63,7 @@ export class CancionesComponent implements OnInit{
     this.servicio.deleteCancion('/usuarios/eliminaProduc/'+id).subscribe( (data: any) => {
       console.log(data);
     });
+    window.location.reload();
 
   }
 
@@ -81,7 +83,8 @@ export class CancionesComponent implements OnInit{
     if(this.elements){
       this.servicio.updateCancion('/usuarios/actualizaProduc/'+ idx, this.elements).subscribe((res : any) =>{
         console.log(res);
-      })
+      });
     }
+    window.location.reload();
   }
 }

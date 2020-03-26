@@ -61,6 +61,7 @@ export class OrdenesComponent implements OnInit {
       console.log(res);
 
     });
+    window.location.reload();
   }
 
   
@@ -69,7 +70,7 @@ export class OrdenesComponent implements OnInit {
     this.servicio.deleteOrden('/usuarios/eliminaOrden/'+id).subscribe( (data: any) => {
       console.log(data);
     });
-
+    window.location.reload();
   }
 
   Editar(orde : Ordene){
@@ -88,6 +89,7 @@ export class OrdenesComponent implements OnInit {
         console.log(res);
       })
     }
+    window.location.reload();
   }
 
 }

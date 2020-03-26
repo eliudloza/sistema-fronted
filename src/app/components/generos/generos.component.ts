@@ -42,15 +42,17 @@ export class GenerosComponent implements OnInit {
       console.log(res);
 
     });
+    window.location.reload();
   
   }
 
   Eliminar( id: number ) {
     console.log(id);
-    this.servicio.deleteCate('/usuarios/eliminaCate/'+id).subscribe( (data: any) => {
+    this.servicio.deleteCliente('/usuarios/eliminaCate/'+id).subscribe( (data: any) => {
       console.log(data);
     });
-
+    
+    window.location.reload();
   }
 
   Editar(cate : Categorias){
@@ -66,8 +68,9 @@ export class GenerosComponent implements OnInit {
     if(this.elements){
       this.servicio.updateCate('/usuarios/actualizaCate/'+ idx, this.elements).subscribe((res : any) =>{
         console.log(res);
-      })
+      });
     }
+    window.location.reload();
   }
 
 }

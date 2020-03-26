@@ -46,6 +46,7 @@ export class ClientesComponent implements OnInit {
     this.servicio.setCliente('/usuarios/creaCliente', this.elements).subscribe((res:any) =>{
       console.log(res);
     });
+    window.location.reload();
   
   }
   Eliminar( id: number ) {
@@ -53,6 +54,7 @@ export class ClientesComponent implements OnInit {
     this.servicio.deleteCliente('/usuarios/eliminaCliente/'+id).subscribe( (data: any) => {
       console.log(data);
     });
+    window.location.reload();
 
   }
 
@@ -75,6 +77,7 @@ export class ClientesComponent implements OnInit {
         console.log(res);
       })
     }
+    window.location.reload();
   }
 
 

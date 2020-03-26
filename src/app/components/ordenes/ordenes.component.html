@@ -70,7 +70,7 @@
       <div class="col">
           <br>
     <div class="table-responsive">
-      <table class="table table-hover table-sm">
+      <table class="table table-hover text-center table-sm">
           <thead class="thead gris text-white">
         <tr >
           <th scope="col">Fecha</th>
@@ -94,7 +94,7 @@
           <td class="text-center">
             <a  (click)="Editar(items)">
             
-            <input *ngIf="items===ordenes"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.cliente}}
+            <input *ngIf="items===ordenes"  (blur)="update(idx)" (keyup.enter)="update(idx)">{{items?.clientes}}
         </a></td>
     
           <td><button type="button" class="btn btn-danger" (click)="Eliminar(items.id)" ><i class="fas fa-trash-alt"></i> Elimina</button></td>

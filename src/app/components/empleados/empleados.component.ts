@@ -45,6 +45,7 @@ export class EmpleadosComponent implements OnInit {
     this.servicio.setEmpleado('/usuarios/crearEmpleado', this.elements).subscribe((res:any) =>{
       console.log(res);
     });
+    window.location.reload();
   }
 
   Eliminar( id: number ) {
@@ -52,6 +53,7 @@ export class EmpleadosComponent implements OnInit {
     this.servicio.deleteEmpleado('/usuarios/eliminaEmple/'+id).subscribe( (data: any) => {
       console.log(data);
     });
+    window.location.reload();
 
   }
 
@@ -72,8 +74,9 @@ export class EmpleadosComponent implements OnInit {
     if(this.elements){
       this.servicio.updateCliente('/usuarios/actualizaEmple/'+ idx, this.elements).subscribe((res : any) =>{
         console.log(res);
-      })
+      });
     }
+    window.location.reload();
   }
 
 }
